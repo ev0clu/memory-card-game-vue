@@ -57,27 +57,43 @@ async function handleFormSubmit() {
         const newPokemonId = randomIntFromInterval(1, 800)
         const isExist = responseArray.find((element) => element.id === newPokemonId)
         if (!isExist) {
-          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${newPokemonId}`)
+          try {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${newPokemonId}`)
 
-          if (response) {
-            const result = await response.json()
+            if (response) {
+              const result = await response.json()
 
-            responseArray.push({
-              id: newPokemonId,
-              name: result.name,
-              imageUrl: result.sprites.other.home.front_default,
-            })
-          } else {
-            toast.error('Fetch error!')
+              responseArray.push({
+                id: newPokemonId,
+                name: result.name,
+                imageUrl: result.sprites.other.home.front_default,
+              })
+            }
+          } catch (error) {
+            isLoading.value = false
+            if (error instanceof Error) {
+              toast.error(error.message)
+            } else {
+              toast.error('Something went wrong. Try again!')
+            }
+            break
           }
+        } else {
+          isLoading.value = false
+          toast.error('Something went wrong. Try again!')
+          break
         }
       }
-      const duplicatedResponseArray = duplicate(responseArray)
-      const shuffledDuplicatedResponseArray = shuffle(duplicatedResponseArray)
 
-      addPokemons(shuffledDuplicatedResponseArray)
-      router.push('/game')
+      if (isLoading.value) {
+        const duplicatedResponseArray = duplicate(responseArray)
+        const shuffledDuplicatedResponseArray = shuffle(duplicatedResponseArray)
+
+        addPokemons(shuffledDuplicatedResponseArray)
+        router.push('/game')
+      }
     } else {
+      isLoading.value = false
       toast.error('Something went wrong. Try again!')
     }
   } else {
