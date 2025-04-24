@@ -12,12 +12,8 @@ export function useStore() {
     if (restoredScores) scores.value = restoredScores
   })()
 
-  const addPokemon = (name: string, imageUrl: string) => {
-    pokemons.value.push({
-      name,
-      imageUrl,
-    })
-    console.log('store', pokemons.value)
+  const addPokemons = (array: Pokemon[]) => {
+    pokemons.value = [...array]
   }
 
   const addScore = (name: string, time: number) => {
@@ -27,7 +23,7 @@ export function useStore() {
 
   return {
     pokemons,
-    addPokemon,
+    addPokemons,
     addScore,
   }
 }
