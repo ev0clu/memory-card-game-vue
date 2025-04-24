@@ -19,7 +19,7 @@ const options = [
   },
 ]
 
-const { pokemons } = useStore()
+const { addPokemon } = useStore()
 const difficultyLevel = ref('')
 const error = ref(false)
 const isLoading = ref(false)
@@ -47,10 +47,7 @@ async function handleFormSubmit() {
 
         if (response) {
           const result = await response.json()
-          pokemons.value.push({
-            name: result.name,
-            image: result.sprites.other.dream_world.front_default,
-          })
+          addPokemon(result.name, result.sprites.other.dream_world.front_default)
         } else {
           toast.error('Fetch error!')
         }
