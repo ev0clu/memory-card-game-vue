@@ -2,8 +2,9 @@ import { ref } from 'vue'
 import { restoreStorage, saveStorage } from '../localStorage'
 import type { Pokemon, Score } from '@/types'
 
+const pokemons = ref<Pokemon[]>([])
+
 export function useStore() {
-  const pokemons = ref<Pokemon[]>([])
   const scores = ref<Score[]>([])
 
   ;(() => {
