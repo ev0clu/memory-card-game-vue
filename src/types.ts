@@ -1,6 +1,6 @@
 export type Pokemon = {
   name: string
-  image: string
+  imageUrl: string
 }
 
 export type Score = {
