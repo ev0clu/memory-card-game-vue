@@ -23,6 +23,8 @@ A simple card game app has built with Vue.js framework, Typescript and more. The
 
 - Vite static deploy to GitHub as GitHub Pages with GitHub Actions
   - [Vite](https://vite.dev/guide/static-deploy)
+- Shuffle array
+  - [freecodecamp]{https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/}
 
 ### Dependencies
 
