@@ -4,7 +4,9 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <header>
-    <img alt="Logo" class="logo" src="@/assets/logo.png" width="35" height="35" />
+    <RouterLink to="/">
+      <img alt="Logo" class="logo" src="@/assets/logo.png" width="35" height="35" />
+    </RouterLink>
 
     <nav>
       <RouterLink to="/">HOME</RouterLink>
