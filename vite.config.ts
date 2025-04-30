@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/pokemon-card-game-vue/',
+  base: '/memory-card-game-vue/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
