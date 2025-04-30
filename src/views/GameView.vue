@@ -2,14 +2,16 @@
 import { computed, onBeforeMount, onMounted, onUnmounted, ref, watch } from 'vue'
 import CardComponent from '@/components/CardComponent.vue'
 import ContainerWrapper from '@/components/ContainerWrapper.vue'
+import FormScoreModal from '@/components/FormScoreModal.vue'
 import { useStore } from '@/composable/useStore'
 import router from '@/router'
 import type { Pokemon } from '@/types'
 
 let intervalId: number | undefined
 
-const { pokemons, setPokemonFound } = useStore()
+const { pokemons, addScore, setPokemonFound } = useStore()
 const counter = ref(0)
+const openSaveScoreModal = ref(false)
 const pokemonPairs = ref<Pokemon[]>([])
 
 function setCounter() {
@@ -18,6 +20,16 @@ function setCounter() {
 
 function select(cardItem: Pokemon) {
   pokemonPairs.value.push({ ...cardItem })
+}
+
+function formSaveScoreSubmit(name: string) {
+  addScore(name, counter.value)
+
+  router.push('/score')
+}
+
+function handleCloseScoreModalClick() {
+  openSaveScoreModal.value = false
 }
 
 const isPair = computed(() => {
@@ -51,7 +63,7 @@ watch(
 watch(isGameOver, (newVal) => {
   if (newVal) {
     clearInterval(intervalId)
-    console.log('GAME OVER')
+    openSaveScoreModal.value = true
   }
 })
 
@@ -65,7 +77,7 @@ onUnmounted(() => clearInterval(intervalId))
 </script>
 
 <template>
-  <ContainerWrapper>
+  <ContainerWrapper class="game-wrapper">
     <p>
       <span>Elapsed Time: </span>
       <span>{{ counter }}</span>
@@ -80,6 +92,11 @@ onUnmounted(() => clearInterval(intervalId))
         @select="select"
       />
     </div>
+    <Teleport to="body">
+      <dialog :open="openSaveScoreModal && isGameOver" @click.self="handleCloseScoreModalClick">
+        <FormScoreModal @form-submit="formSaveScoreSubmit" :counter="counter" />
+      </dialog>
+    </Teleport>
   </ContainerWrapper>
 </template>
 
