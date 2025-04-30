@@ -40,7 +40,14 @@ function shuffle(array: Pokemon[]) {
 }
 
 function duplicate(array: Pokemon[]) {
-  const duplicatedArray = array.reduce((res: Pokemon[], current) => [...res, current, current], [])
+  const duplicatedArray = array.reduce(
+    (res: Pokemon[], current) => [
+      ...res,
+      { ...current, uid: crypto.randomUUID() },
+      { ...current, uid: crypto.randomUUID() },
+    ],
+    [],
+  )
   return duplicatedArray
 }
 
@@ -65,8 +72,10 @@ async function handleFormSubmit() {
 
               responseArray.push({
                 id: newPokemonId,
+                uid: '',
                 name: result.name,
                 imageUrl: result.sprites.other.home.front_default,
+                isFound: false,
               })
             }
           } catch (error) {
