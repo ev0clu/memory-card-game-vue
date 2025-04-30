@@ -1,6 +1,6 @@
 # **Pokemon Card Game App**
 
-A simple card game app has built with Vue.js framework, Typescript and more. The app allows users to play with pokemon cards and pair them together. The user can choose 3 different difficulty level. Additionally, there is a score page to see previous results.
+A simple card game app has built with Vue.js framework, Typescript and more. The app allows users to play with pokemon cards and pair them together. The user can choose 3 different difficulty level. Additionally, there is a score page to see previous scores.
 
 ### Demo video: [Link](https://ev0clu.github.io/pokemon-card-game-vue/)
 
@@ -32,11 +32,13 @@ A simple card game app has built with Vue.js framework, Typescript and more. The
 - [Vue Router](https://router.vuejs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Pico CSS](https://picocss.com/)
+- [date-fns](https://date-fns.org/)
 
 ### Layout
 
 ![layout-1 picture](https://github.com/ev0clu/pokemon-card-game-vue/blob/main/layout-1.png?raw=true)<br>
 ![layout-2 picture](https://github.com/ev0clu/pokemon-card-game-vue/blob/main/layout-2.png?raw=true)<br>
+![layout-3 picture](https://github.com/ev0clu/pokemon-card-game-vue/blob/main/layout-3.png?raw=true)<br>
 
 ### Asset
 
