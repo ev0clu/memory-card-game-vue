@@ -5,13 +5,6 @@ import type { Pokemon, Score } from '@/types'
 const pokemons = ref<Pokemon[]>([])
 
 export function useStore() {
-  const scores = ref<Score[]>([])
-
-  ;(() => {
-    const restoredScores = restoreStorage()
-    if (restoredScores) scores.value = restoredScores
-  })()
-
   const addPokemons = (array: Pokemon[]) => {
     pokemons.value = [...array]
   }
@@ -21,8 +14,26 @@ export function useStore() {
   }
 
   const addScore = (name: string, time: number) => {
-    scores.value.push({ name, time })
-    saveStorage(scores.value)
+    let scoreArray: Score[] = []
+    const newScore = { id: crypto.randomUUID(), name, time, createdAt: new Date() }
+
+    const restoredArray = restoreStorage()
+
+    if (restoredArray) {
+      scoreArray = [...restoredArray]
+      scoreArray.push(newScore)
+    } else {
+      scoreArray.push(newScore)
+    }
+    saveStorage(scoreArray)
+  }
+
+  const getScores = () => {
+    const historyScore = restoreStorage()
+
+    if (historyScore) {
+      return [...historyScore].sort((a, b) => a.time - b.time)
+    } else return []
   }
 
   return {
@@ -30,5 +41,6 @@ export function useStore() {
     addPokemons,
     setPokemonFound,
     addScore,
+    getScores,
   }
 }
