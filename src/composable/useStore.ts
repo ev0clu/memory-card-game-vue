@@ -16,6 +16,10 @@ export function useStore() {
     pokemons.value = [...array]
   }
 
+  const setPokemonFound = (id: number) => {
+    pokemons.value.map((item) => (item.id === id ? (item.isFound = true) : item))
+  }
+
   const addScore = (name: string, time: number) => {
     scores.value.push({ name, time })
     saveStorage(scores.value)
@@ -24,6 +28,7 @@ export function useStore() {
   return {
     pokemons,
     addPokemons,
+    setPokemonFound,
     addScore,
   }
 }
