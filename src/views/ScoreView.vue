@@ -11,8 +11,8 @@ const scoreHistory = getScores()
 <template>
   <ContainerWrapper>
     <h1>Scores</h1>
-    <div class="score">
-      <table class="striped" v-if="scoreHistory !== null && scoreHistory.length > 0">
+    <div class="score" v-if="scoreHistory !== null && scoreHistory.length > 0">
+      <table class="striped">
         <thead data-theme="light">
           <tr>
             <th scope="col">Order</th>
@@ -30,15 +30,14 @@ const scoreHistory = getScores()
           </tr>
         </tbody>
       </table>
-
-      <strong v-else>There is still no history scores!</strong>
     </div>
+    <strong v-else>There is still no history scores!</strong>
   </ContainerWrapper>
 </template>
 
 <style scoped>
 .score {
-  overflow: scroll;
+  overflow: auto;
   height: 350px;
   width: 100%;
 }
