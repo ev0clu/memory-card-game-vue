@@ -7,6 +7,8 @@ export type Pokemon = {
 }
 
 export type Score = {
+  id: string
   name: string
   time: number
+  createdAt: Date
 }
