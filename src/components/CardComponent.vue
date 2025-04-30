@@ -19,7 +19,7 @@ const isFound = computed(() => props.pokemon.isFound)
   <button
     :class="[{ selected: isSelected }]"
     @click="cardClickHandler"
-    :disabled="isSelected || isFound"
+    :disabled="isSelected || isFound || props.pokemonPairs.length === 2"
   >
     <img
       v-if="isSelected || isFound"
