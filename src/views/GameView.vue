@@ -6,6 +6,7 @@ import FormScoreModal from '@/components/FormScoreModal.vue'
 import { useStore } from '@/composable/useStore'
 import router from '@/router'
 import type { Pokemon } from '@/types'
+import { toast } from 'vue-sonner'
 
 let intervalId: number | undefined
 
@@ -24,7 +25,7 @@ function select(cardItem: Pokemon) {
 
 function formSaveScoreSubmit(name: string) {
   addScore(name, counter.value)
-
+  toast.success('New score successfully added!')
   router.push('/score')
 }
 
@@ -64,6 +65,7 @@ watch(isGameOver, (newVal) => {
   if (newVal) {
     clearInterval(intervalId)
     openSaveScoreModal.value = true
+    toast.success('Great, you found all pokemons!')
   }
 })
 

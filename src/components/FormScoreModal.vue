@@ -23,6 +23,7 @@ function formSubmitHandler() {
 
 <template>
   <article>
+    <h1>Add new score</h1>
     <form @submit.prevent="formSubmitHandler">
       <div class="title">
         <input
@@ -51,6 +52,10 @@ function formSubmitHandler() {
 <style scoped>
 article  {
   box-shadow: 2px 2px 20px 1px;
+}
+
+h1 {
+  text-align: center;
 }
 
 strong {

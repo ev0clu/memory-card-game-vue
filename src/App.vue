@@ -12,7 +12,7 @@ import { Toaster } from 'vue-sonner'
     <RouterView />
   </main>
 
-  <Toaster />
+  <Toaster richColors />
   <FooterComponent />
 </template>
 
