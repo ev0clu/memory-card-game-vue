@@ -11,6 +11,7 @@ A simple card game app has built with Vue.js framework, Typescript and more. The
 - Local Storage has been used to store previous scores
 - Vue.js framework is used to create the frontend application
 - Pico CSS is used to style the UI
+- Vue-Sonner is used for toast notifications
 
 ## How to run from local repository
 
@@ -33,6 +34,7 @@ A simple card game app has built with Vue.js framework, Typescript and more. The
 - [Typescript](https://www.typescriptlang.org/)
 - [Pico CSS](https://picocss.com/)
 - [date-fns](https://date-fns.org/)
+- [vue-sonner](https://github.com/xiaoluoboding/vue-sonner)
 
 ### Layout
 
