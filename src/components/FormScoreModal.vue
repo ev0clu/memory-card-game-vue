@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from '@/router'
 import { ref } from 'vue'
 
 const props = defineProps<{ counter: number }>()
@@ -43,6 +44,7 @@ function formSubmitHandler() {
         </strong>
       </div>
       <div class="btn-container">
+        <button class="outline contrast" @click="router.push('/')">Home</button>
         <button>Submit</button>
       </div>
     </form>
@@ -93,5 +95,6 @@ input {
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+  gap: 2rem;
 }
 </style>
